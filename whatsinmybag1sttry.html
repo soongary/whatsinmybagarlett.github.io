@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Увеличение картинок при наведении</title>
+  <style>
+    body {
+      background-color: #00FF00; /* Неоново-зеленый цвет фона */
+    }
+
+    .image-container {
+      display: inline-block;
+      position: relative;
+    }
+
+    .image-container img {
+      transition: transform 0.3s ease;
+      width: 300px; /* Задайте желаемую ширину */
+      height: auto; /* Автоматически рассчитайте высоту, чтобы сохранить пропорции */
+    }
+
+    .image-container:hover img {
+      transform: scale(1.2);
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="https://i.pinimg.com/750x/c0/83/75/c0837581744d8417723f1bf8298b22af.jpg" alt="Image 1">
+  </div>
+
+  <div class="image-container">
+    <img src="https://i.pinimg.com/750x/f8/9d/2c/f89d2c024d28c45f8bd438bf791de6c9.jpg" alt="Image 2">
+  </div>
+
+  <div class="image-container">
+    <img src="https://i.pinimg.com/750x/c7/b7/77/c7b777cb79485b589120ef2141a7b330.jpg" alt="Image 3">
+  </div>
+
+  <div class="image-container">
+    <img src="https://i.pinimg.com/474x/6d/46/d8/6d46d8f903385075fab52fd96914d884.jpg" alt="Image 4">
+  </div>
+
+  <div class="image-container">
+    <img src="https://i.pinimg.com/474x/31/b8/12/31b812d0d3a9a5b446d6eecbe87cd5e4.jpg" alt="Image 5">
+  </div>
+
+
+
+  <script>
+    const imageContainers = document.querySelectorAll('.image-container');
+
+    imageContainers.forEach(container => {
+      const img = container.querySelector('img');
+      let originalTransform = null;
+
+      container.addEventListener('mouseenter', () => {
+        originalTransform = img.style.transform;
+        img.style.transform = 'scale(1.2)';
+      });
+
+      container.addEventListener('mouseleave', () => {
+        img.style.transform = originalTransform;
+      });
+    });
+  </script>
+</body>
+</html>
